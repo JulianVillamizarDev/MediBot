@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diagnóstico Médico IA</title>
+</head>
+<body>
+    <h2>Selecciona tus síntomas</h2>
+    <form method="post">
+        {% for s in symptoms %}
+            <input type="checkbox" name="symptoms" value="{{ s }}">{{ s }}<br>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Diagnosticar">
+    </form>
+
+    {% if prediction %}
+        <h3>Diagnóstico: {{ prediction }}</h3>
+        <p><strong>Descripción:</strong> {{ description }}</p>
+        <p><strong>Precauciones:</strong></p>
+        <ul>
+            {% for p in precautions %}
+                <li>{{ p }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
